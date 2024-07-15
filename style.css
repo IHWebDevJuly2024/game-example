@@ -1,0 +1,89 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family:fantasy;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#game-area {
+  width: 80%;
+  height: 80%;
+  background-image: url("./assets/background.webp");
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  overflow: hidden;
+}
+
+#player {
+  background-image: url("./assets/redpanda.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 4em;
+  height: 4em;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.enemy {
+  background-image: url("./assets/robomonkey.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 6em;
+  height: 6em;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#game-over-screen{
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(9, 102, 182, 0.456);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(10px);
+}
+
+#game-over-container{
+  background-color: aliceblue;
+  width: 50vw;
+  height: 50vh;
+  border: 10px solid brown;
+  border-radius: 13px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4em;
+}
+
+
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-10px);
+  }
+  50% {
+    transform: translateX(10px);
+  }
+  75% {
+    transform: translateX(-10px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
