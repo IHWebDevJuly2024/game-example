@@ -7,14 +7,28 @@
     <title>My game</title>
   </head>
   <body>
-    <p>Lives: <span id="lives"></span></p>
-    <p>Score: <span id="score"></span></p>
+    <section id="game-start-screen">
+      <img id="title-img" src="./assets/title.png" alt="title" />
+      <img
+        id="start-game-btn"
+        src="./assets/start-game.png"
+        alt="start game icon"
+      />
+    </section>
     <section id="game-area">
+      <div id="stats">
+        <span id="lives"></span>
+        <span id="score"></span>
+      </div>
       <div id="player"></div>
     </section>
     <section id="game-over-screen">
       <div id="game-over-container">
-        <h3>Game over</h3>
+        <img
+          id="try-again-btn"
+          src="./assets/try-again.png"
+          alt="try again icon"
+        />
       </div>
     </section>
     <script src="./index.js"></script>

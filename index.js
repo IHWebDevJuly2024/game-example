@@ -1,16 +1,29 @@
 console.log("GAME initialized");
 const gameOverElement = document.querySelector("#game-over-screen");
+const startGameButton = document.querySelector("#start-game-btn");
+const gameStartScreen = document.querySelector("#game-start-screen");
+
+startGameButton.addEventListener("click", () => {
+  game.hasStarted = true;
+  gameStartScreen.style.display = "none";
+});
 
 const game = {
   score: 0,
   lives: 6,
   enemies: [],
+  level: 0,
   isGameOver: false,
+  hasStarted: false,
   level: 0,
   checkGameOver() {
     if (this.lives <= 0) {
       gameOverElement.style.display = "flex";
       this.isGameOver = true;
+      const tryAgainButton = document.querySelector("#try-again-btn");
+      tryAgainButton.addEventListener("click", () => {
+        location.reload();
+      });
     }
   },
 };
@@ -48,18 +61,25 @@ let animationID;
 function gameLoop() {
   frames++;
 
-  if (!game.isGameOver) {
+  if (!game.isGameOver && game.hasStarted) {
     player.checkCollisions();
     player.move();
     game.checkGameOver();
 
     // I spawn an enemy every 100 frames
-    if (frames % 50 === 0) {
-      if (game.score % 20 === 0) {
-        // LEVEL increase
-        game.enemies.push(new Enemy(10));
-      } else {
-        game.enemies.push(new Enemy(4));
+    if (frames % 500 === 0) {
+      // LEVEL increase
+      game.level++;
+    }
+
+    if (game.level < 3) {
+      if (frames % 50 === 0) {
+        game.enemies.push(new Enemy(4 * game.level));
+      }
+    }
+    if (game.level >= 3) {
+      if (frames % 40 === 0) {
+        game.enemies.push(new Enemy(12));
       }
     }
   }

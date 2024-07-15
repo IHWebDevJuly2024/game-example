@@ -15,6 +15,7 @@ const player = {
       case "ArrowUp":
       case "w":
         this.positionY -= this.velocity;
+        this.element.style.animation = "rotate-up 0.2s";
         break;
       case "ArrowUpArrowRight":
       case "ArrowRightArrowUp":
@@ -22,15 +23,18 @@ const player = {
       case "dw":
         this.positionY -= this.velocity;
         this.positionX += this.velocity;
+        this.element.style.animation = "rotate-up 1s";
         break;
       case "ArrowDown":
       case "s":
+        this.element.style.animation = "rotate-down 1s";
         this.positionY += this.velocity;
         break;
       case "ArrowDownArrowRight":
       case "ArrowRightArrowDown":
       case "sd":
       case "ds":
+        this.element.style.animation = "rotate-down 1s";
         this.positionY += this.velocity;
         this.positionX += this.velocity;
         break;
@@ -38,6 +42,7 @@ const player = {
       case "ArrowLeftArrowDown":
       case "sa":
       case "as":
+        this.element.style.animation = "rotate-down 1s";
         this.positionY += this.velocity;
         this.positionX -= this.velocity;
         break;
@@ -45,6 +50,8 @@ const player = {
       case "ArrowLeftArrowUp":
       case "wa":
       case "aw":
+        this.element.style.animation = "rotate-up 1s";
+
         this.positionY -= this.velocity;
         this.positionX -= this.velocity;
         break;
@@ -71,6 +78,7 @@ const player = {
   unSetDirection(direction) {
     // if we have this: ["ArrowUp", "ArrowLeft"]
     const index = this.directions.indexOf(direction); // direction is: ArrowUp so the value of index is 0
+    this.element.style.animation = "trembling 0.5s infinite";
     this.directions.splice(index, 1);
   },
   setBoundaries() {

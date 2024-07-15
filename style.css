@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family:fantasy;
+  font-family: fantasy;
 }
 
 body {
@@ -23,6 +23,20 @@ body {
   overflow: hidden;
 }
 
+#game-start-screen {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(9, 102, 182, 0.456);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(10px);
+  padding: 10em;
+  gap: 2em;
+  z-index: 1;
+}
+
 #player {
   background-image: url("./assets/redpanda.png");
   background-size: contain;
@@ -32,6 +46,7 @@ body {
   position: absolute;
   top: 0;
   left: 0;
+  animation: trembling 0.5s infinite;
 }
 
 .enemy {
@@ -43,9 +58,21 @@ body {
   position: absolute;
   top: 0;
   left: 0;
+  animation: trembling 0.5s infinite;
 }
 
-#game-over-screen{
+#stats {
+  position: absolute;
+  background-image: url("./assets/stats.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 200px;
+  width: 200px;
+  top: 0;
+  right: 0;
+}
+
+#game-over-screen {
   position: absolute;
   width: 100vw;
   height: 100vh;
@@ -56,8 +83,9 @@ body {
   backdrop-filter: blur(10px);
 }
 
-#game-over-container{
-  background-color: aliceblue;
+#game-over-container {
+  background-image: url("./assets/game-over.webp");
+  background-size: cover;
   width: 50vw;
   height: 50vh;
   border: 10px solid brown;
@@ -69,6 +97,60 @@ body {
   font-size: 4em;
 }
 
+#try-again-btn {
+  width: 40%;
+  cursor: pointer;
+  transition: 300ms;
+}
+
+#title-img {
+  width: 50%;
+}
+
+#start-game-btn {
+  position: absolute;
+  bottom: 10%;
+  width: 15%;
+  cursor: pointer;
+  transition: 300ms;
+}
+
+#try-again-btn:hover,
+#start-game-btn:hover {
+  transform: scale(1.1);
+}
+
+#lives{
+  position: absolute;
+  bottom: 15%;
+  right: 15%;
+  font-size: 11px;
+}
+
+#score{
+  position: absolute;
+  top: 25%;
+  right: 15%;
+  font-size: 3em;
+}
+
+@keyframes trembling {
+  0% {
+    transform: translateY(0);
+  }
+  25% {
+    transform: translateY(-1px);
+  }
+  50% {
+    transform: translateY(1px);
+  }
+  75% {
+    transform: translateY(-1px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
 
 @keyframes shake {
   0% {
@@ -85,5 +167,29 @@ body {
   }
   100% {
     transform: translateX(0);
+  }
+}
+
+@keyframes rotate-up {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-20deg);
+  }
+  100% {
+    transform: rotate(-20deg);
+  }
+}
+
+@keyframes rotate-down {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(20deg);
+  }
+  100% {
+    transform: rotate(20deg);
   }
 }
